@@ -1,5 +1,6 @@
 import { fetchFromStrapi } from "@/lib/strapi";
 import Link from "next/link";
+import Image from "next/image";
 
 export const revalidate = 60;
 
@@ -19,19 +20,20 @@ export default async function ServicePage() {
                 </p>
             </header>
 
-            <section className="space-y-6">
+            <section className="flex flex-wrap gap-3 justify-center">
                 {services.map((service) => {
-                    console.log('Service:', service);
-                    const imageUrl = service.image[0].url
+                    const imageUrl = service.image[0].url;
 
                     return (
-                        <Link key={service.id} href={`/services/${service.id}`} className="block">
-                            <article className="bg-white shadow-sm rounded-lg overflow-hidden border border-[#A0A8B9] hover:shadow-md transition-shadow duration-200 p-6 w-2/3 mx-auto">
+                        <Link key={service.id} href={`/services/${service.id}`} className="block w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-12px)]">
+                            <article className="bg-white shadow-sm rounded-lg overflow-hidden border border-[#A0A8B9] hover:shadow-md transition-shadow duration-200 p-6">
                                 {imageUrl && (
-                                    <img
+                                    <Image
                                         src={imageUrl}
-                                        alt={'Service Image'}
-                                        className="w-full h-64 object-cover mb-4"
+                                        width={400}
+                                        height={400}
+                                        className="w-full rounded shadow mb-8"
+                                        alt='Service Image'
                                     />
                                 )}
                                 <h2 className="text-2xl font-playfair text-[#B76E2D] mb-2">

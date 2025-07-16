@@ -1,6 +1,7 @@
 import { fetchFromStrapi } from '@/lib/strapi';
 import type { Actuality } from '@/types/strapi';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export const revalidate = 60;
 
@@ -29,14 +30,16 @@ export default async function ActualitiesPage() {
           return (
             <Link key={actuality.id} href={`/actualities/${actuality.id}`} className="block">
               <article
-                className="bg-white shadow-sm rounded-lg overflow-hidden border border-[#A0A8B9] hover:shadow-md transition-shadow duration-200"
+                className="bg-white justify-center shadow-sm rounded-lg overflow-hidden border border-[#A0A8B9] hover:shadow-md transition-shadow duration-200 w-full mx-auto"
               >
                 {image && (
-                  <img
+                  <Image
                     src={imageUrl}
-                    alt={image.alternativeText || ''}
-                    className="w-full h-64 object-cover"
-                  />
+                    width={600}
+                    height={400}
+                    className="w-full rounded shadow mb-8 max-h-80"
+                    alt='Actuality Image'
+                     />
                 )}
 
                 <div className="p-6">

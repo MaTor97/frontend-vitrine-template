@@ -1,4 +1,5 @@
 import { fetchFromStrapi } from "@/lib/strapi";
+import Image from "next/image";
 
 export const revalidate = 60;
 
@@ -16,10 +17,13 @@ export default async function GalleryPage() {
 
                     return (
                         <div key={item.id} className="bg-white shadow-sm rounded-lg overflow-hidden border border-[#A0A8B9] hover:shadow-md transition-shadow duration-200">
-                            <img
-                                src={imageUrl}
-                                className="w-full h-64 object-cover"
-                            />
+                            <Image
+                              src={imageUrl}
+                              width={600}
+                              height={400}
+                              className="w-full rounded shadow mb-8"
+                              alt="Gallery Image"
+                              />
                             <p className="p-4 text-center text-[#4A6C44] font-roboto">
                                 {item.legend}
                             </p>

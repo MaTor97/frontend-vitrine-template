@@ -1,6 +1,7 @@
 import { fetchFromStrapi } from '@/lib/strapi';
 import type { Actuality } from '@/types/strapi';
 import { notFound } from 'next/navigation';
+import Image from 'next/image';
 
 export default async function Page({ params }: { params: { id: string } }) {
   // Récupère toutes les actualités depuis Strapi
@@ -29,11 +30,13 @@ export default async function Page({ params }: { params: { id: string } }) {
         </p>
 
         {actuality.image?.url && (
-          <img
+          <Image
             src={imageUrl}
-            alt={actuality.image.alternativeText || ''}
+            width={600}
+            height={400}
             className="w-full rounded shadow mb-8"
-          />
+            alt='actuality Image'
+            />
         )}
 
         <div

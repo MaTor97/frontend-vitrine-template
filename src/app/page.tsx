@@ -2,21 +2,24 @@ import FAQPage from "@/components/FAQ";
 import ReviewFormPage from "@/components/reviews";
 import { fetchFromStrapi } from "@/lib/strapi";
 import { HomeContent } from "@/types/strapi";
+import Image from "next/image";
 
 export default async function Home() {
   const res = await fetchFromStrapi<{ data: HomeContent }>('home');
   const homeContent = res.data;
-  console.log(homeContent);
+  console.log('Home Content:', homeContent);
 
   return (
     <main className="bg-[#F5F0E6] text-[#0B1D51] font-montserrat">
     {/* Hero Section */}
       <section className="px-6 py-12 flex items-center text-center space-y-6">
-        <img
+        <Image
           src={homeContent.heroimage.url}
-          alt="Hero"
-          className="max-w-5/8 h-auto rounded "
-        />
+          alt="Hero Image"
+          width={600}
+          height={400}
+          className="w-2/3 mb-8"
+          />
         <div>
           <h1 className="text-3xl md:text-5xl font-playfair font-bold text-[#B76E2D] mb-4">
             {homeContent.title}

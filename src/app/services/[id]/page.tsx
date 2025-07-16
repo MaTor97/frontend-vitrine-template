@@ -1,6 +1,7 @@
 import { fetchFromStrapi } from '@/lib/strapi';
 import { notFound } from 'next/navigation';
 import type { Service } from '@/types/strapi';
+import Image from 'next/image';
 
 export default async function Page({ params }: { params: { id: string } }) {
   // Récupère toutes les actualités depuis Strapi
@@ -23,10 +24,12 @@ export default async function Page({ params }: { params: { id: string } }) {
         <h1 className="text-4xl font-playfair mb-4 text-[#B76E2D]">
           {service.title}
         </h1>
-        <img
+        <Image
           src={imageUrl}
-          alt={service.image?.alternativeText || 'Service Image'}
-          className="w-full h-64 object-cover mb-6 shadow-md"
+          alt='Service Image'
+          width={600}
+          height={400}
+          className="w-full rounded shadow mb-8"
           />
         <p className="text-sm text-[#4A6C44] mb-6 font-roboto">
           {service.description}
