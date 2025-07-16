@@ -12,7 +12,7 @@ export type Actuality = {
 export type Service = {
     id: number;
     title: string;
-    image?: {
+    heroimage: {
         url: string;
         alternativeText?: string;
     }[];
