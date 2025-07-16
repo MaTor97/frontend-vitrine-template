@@ -83,8 +83,6 @@ export default function ReviewFormPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
-
-      const result = await res.json();
       if (!res.ok) throw new Error(`Erreur Strapi: ${res.statusText}`);
 
       setMessage('Merci pour votre avis !');
@@ -182,8 +180,9 @@ export default function ReviewFormPage() {
                 <p className="text-[#0B1D51]">{review.review_text}</p>
                 <p className="mt-2 text-[#B76E2D] font-bold">Note : {review.note}/5</p>
                 {imageUrl && (
-                  <img
+                  <Image
                     src={imageUrl}
+                    fill
                     alt={`Image de ${review.Name}`}
                     className="mt-4 max-h-40 rounded mx-auto"
                   />
