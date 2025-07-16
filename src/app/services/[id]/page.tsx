@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 export default async function Page({ params }: { params: { id: string } }) {
   // Récupère toutes les actualités depuis Strapi
-  const res = await fetchFromStrapi<{ data: Service }>('services');
+  const res = await fetchFromStrapi<Service[]>('services');
 
   // Trouve celle qui correspond à l'ID donné
   const service = res.data.find((a) => a.id === Number(params.id));
