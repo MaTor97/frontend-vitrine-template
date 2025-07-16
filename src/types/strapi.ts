@@ -18,7 +18,7 @@ export type Service = {
     }[];
 };
 
-export interface HomeContent {
+export type HomeContent = {
   title: string;
   subtitle: string;
   heroImage: {
