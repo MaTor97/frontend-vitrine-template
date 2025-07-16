@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 export const revalidate = 5;
 
@@ -125,8 +126,9 @@ export default function ReviewFormPage() {
             onChange={handleImageChange}
           />
           {imagePreview && (
-            <img
+            <Image
               src={imagePreview}
+              fill
               alt="Aperçu"
               className="mt-2 max-h-32 rounded shadow mx-auto"
             />
