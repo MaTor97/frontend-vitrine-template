@@ -1,9 +1,10 @@
 import { fetchFromStrapi } from '@/lib/strapi';
 import { notFound } from 'next/navigation';
+import type { Service } from '@/types/strapi';
 
 export default async function Page({ params }: { params: { id: string } }) {
   // Récupère toutes les actualités depuis Strapi
-  const res = await fetchFromStrapi<{  }>('services');
+  const res = await fetchFromStrapi<{ data: Service[] }>('services');
 
   // Trouve celle qui correspond à l'ID donné
   const service = res.data.find((a) => a.id === Number(params.id));
