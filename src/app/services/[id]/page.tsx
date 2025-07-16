@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import type { Service } from '@/types/strapi';
 import Image from 'next/image';
 
-export default async function Page({ params }: { params: { id: string } }) {
+export default async function Page({ params }: { params: { id: number } }) {
   // Récupère toutes les actualités depuis Strapi
   const res = await fetchFromStrapi<Service[]>('services');
 
